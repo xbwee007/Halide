@@ -69,6 +69,7 @@ function(halide_generator NAME)
       target_include_directories("${GENLIB}" PRIVATE
                                  $<TARGET_PROPERTY:${DEP},INTERFACE_INCLUDE_DIRECTORIES>)
     endforeach()
+    set_target_properties("${GENLIB}" PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
     # Ensure that Halide.h is built prior to any Generator
     add_dependencies("${GENLIB}" ${HALIDE_COMPILER_LIB})
     _halide_force_link_library("${NAME}_binary" "${GENLIB}")
